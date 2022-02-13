@@ -1,0 +1,47 @@
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class LongestSubsequence {
+
+	public static void main(String[] args) {
+	int array[] = {7, 23,5, 45,19,65,22,78,90,36,99};
+      ArrayList list = new ArrayList();
+      ArrayList longestList = new ArrayList();
+      int currentMax;
+      int highestCount = 0;
+      int length;
+      for(int i = 0; i < array.length;i++)
+      {
+          currentMax = Integer.MIN_VALUE;
+          for(int j = i;j < array.length; j++)
+          {
+              if(array[j] > currentMax)
+              {
+                  list.add(array[j]);
+                  currentMax = array[j];
+              }
+          }
+           
+          //Compare previous highest subsequence
+          if(highestCount < list.size())
+          {
+              highestCount = list.size();
+              longestList = new ArrayList(list); 
+          }  
+          list.clear();
+      }
+      System.out.println();
+       
+      //Print list
+      Iterator itr = longestList.iterator();
+      System.out.println("The Longest subsequence");
+      while(itr.hasNext())
+      {
+          System.out.print(itr.next() + " ");
+      }
+      System.out.println();
+      System.out.println("Length of LIS: " + highestCount);
+  }
+   
+}
